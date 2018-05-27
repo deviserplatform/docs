@@ -1,0 +1,14 @@
+#autocollapse .navbar-header {
+    margin-left: 0;
+    margin-right: 80px;
+}
+
+.navbar-brand{
+    width: 180px;
+    padding-top: 8px;
+}
+
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover{
+    color:inherit;
+    background-color: inherit; 
+}
