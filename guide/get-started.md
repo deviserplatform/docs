@@ -1,6 +1,9 @@
+#Get Started
+
 ## Requirements
-Deviser Platform is developed on .NET Core and the front-end build tool is based on node.js framework: Therefore, kindly make sure you have installed following frameworks. 
-1. Install [.NET Core SDK 2.1] (https://www.microsoft.com/net/download)
+Deviser Platform is developed on .NET Core and the front-end build tool is based on node.js framework. Therefore, kindly make sure you have installed following frameworks: 
+
+1. Install [.NET Core SDK 2.1](https://www.microsoft.com/net/download)
 2. Install [Node.js](https://nodejs.org)
 3. Install bower `npm install -g bower` 
 4. Install gulp-cli `npm install --global gulp-cli`

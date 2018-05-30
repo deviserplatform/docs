@@ -1,8 +1,7 @@
 ## Vision
 
-Develop stable, scalable and secure cross platform applications in no time.
+Develop stable, scalable and secure cross-platform applications in no time.
 
-## About
 ### What is Deviser Platform?
 Deviser is an open-source unique framework to develop modern cross-platform applications and Web Content Management system based on ASP.NET Core. This platform enables developers to create modern web application and empowers any user groups to create dynamic contents by just drag-and-drop on a dynamic layout in no time. Deviser Platform is completely free and Open Source on Github.
 
