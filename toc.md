@@ -1,2 +1,2 @@
 # [Guide](guide/intro.md)
-# [Conceps](concepts.md)
+# [Architecture and Conceps](concepts.md)
