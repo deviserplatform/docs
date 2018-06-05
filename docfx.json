@@ -32,7 +32,7 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "assets/**"
         ]
       }
     ],
