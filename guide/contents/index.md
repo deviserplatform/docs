@@ -15,6 +15,7 @@ To create a content type navigate to Admin (click the Deviser logo on top left c
 In content management, user can add, update activate/deactivate content types. 
 
 ## Properties
+Properties are list of attributes which can be used in content types or modules. A property can be single value attribute (e.g css class of a div) or a list attribute (e.g. ali)
 
 ## Content Templates
 
