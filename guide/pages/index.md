@@ -1,9 +1,9 @@
 # Pages
-Page is a basic building block of the platform which contains modules and contents. To create a page go to **Admin -> Page Management** and add a page, [read more](pages/index.md). Page always has three modes: View, Edit and Layout. To understand the concepts, [read more](concepts.md)
+Page is a basic building block of the Deviser Platform which contains modules and contents. To create a page go to **Admin -> Page Management** and add a page, [read more](pages/index.md). Page always has three modes: View, Edit and Layout. To understand the concepts, [read more](concepts.md)
 This section explains Edit mode of a page. 
 
 ## Edit page
-Once the Deviser Platform has been installed and configured with the database, login to the platform. After login, control bar appears on the top of the page as shown below.
+Once the platform has been installed and configured with the database, login to the platform. After login, control bar appears on the top of the page as shown below.
 
 <img src="../../assets/images/ViewMode.png">
 
@@ -17,32 +17,37 @@ In edit mode, users can add/remove contents/modules in a configured layout. Left
 ### Add Content/Module
 To add a content/module, just pick a content or a module and drag-and-drop on any appropirate placeholder.
 
-<video autoplay muted loop id="myVideo">
+<video autoplay muted loop>
   <source src="../../assets/videos/Page_AddContent.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
 
 ### Content/Module Permissions
-User can set role based view/edit permissions for each module/content added in a page. 
+User can set role based view/edit permissions for each module/content added in a page. By default, permissions are inherited from the page and those can be overridden by content/module permissions.
 
 <img src="../../assets/images/ContentPermissions.png">
 
 ### Add/Update properties
-Each module/content can have one or more properties. Value of a property can change the behaviour of a module/content. Properties can be updated by simply seleting module/content and changing value in property pane and saving it as shown below
+Each module/content can have one or more properties. Value of a property can change the behaviour of a module/content in view mode. Properties can be updated by simply seleting module/content and changing value in property pane and saving it as shown below.
 
-<video autoplay muted loop id="myVideo">
+<video autoplay muted loop>
   <source src="../../assets/videos/Page_UpdateProperties.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
 ### Remove a content/module
+Contents/modules can be removed by selecting a content/module, drag-and-drop on the trash can as shown below.
 
-<video autoplay muted loop id="myVideo">
+<video autoplay muted loop>
   <source src="../../assets/videos/Page_RemoveContent.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
-### Edit content 
+### Edit content/module
+Any contents or modules (if edit action is configured), can be edited by clicking the edit button of a content/module as shown below. The changes will be reflected in view mode.
 
-### Edit module
+<video autoplay muted loop>
+  <source src="../../assets/videos/Page_EditContent.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>

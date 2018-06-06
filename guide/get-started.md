@@ -1,4 +1,4 @@
-#Get Started
+# Get Started
 
 >[!NOTE]
 >This guide assumes that readers is familier with ASP.NET Core, C#, any of the supported Databases and Operating Systems mentioned below.
