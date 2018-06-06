@@ -12,6 +12,7 @@ To create a content type navigate to Admin -> Dynamic Contents -> Content Type, 
 Enter the information 
 
 ## Properties
+Properties are list of attributes which can be used in content types or modules. A property can be single value attribute (e.g css class of a div) or a list attribute (e.g. ali)
 
 ## Content Templates
 
