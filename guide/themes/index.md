@@ -5,3 +5,4 @@ Add some content...
 ## Client Dependency
 1. Require TagHelpers
 2. Render TagHelpers
+3. Example theme
