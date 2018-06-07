@@ -2,9 +2,12 @@
 # [Get Started](get-started.md)
 
 ## [Page](pages/index.md)
-## [Layouts](layouts/index.md)
-## [Themes](themes/index.md)
-## [Contents](contents/index.md)
+## [Extensions](extensions/index.md)
+### [Modules](extensions/modules.md)
+### [Contents](extensions/contents.md)
+### [Layouts](extensions/layouts.md)
+### [Themes](extensions/themes.md)
+
 
 # [Administration](admin/index.md)
 ## [Page Management](admin/page-management.md)
