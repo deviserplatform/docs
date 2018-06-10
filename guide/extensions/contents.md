@@ -12,14 +12,16 @@ To create a content type navigate to Admin (click the Deviser logo on top left c
   Your browser does not support HTML5 video.
 </video>
 
+>[!NOTE]
+>Name of the content type should be unique.
+
 In content management, content types can be added, updated activated/deactivated. For each content type, one or more properties can be added as shown below.
 
 <img src="../../assets/images/Content_ContentManagementEdit.png">
 
-Here, name of the content type should match with the template names that will be explained later.
+Here, name of the content type should exactly match with the template nams that will be explained in next section.
 
-## Properties
-Properties are list of attributes which can be used in content types or modules. A property can be single value attribute (e.g css class of a div) or a list attribute (e.g. ali)
+
 
 ## Content Templates
 

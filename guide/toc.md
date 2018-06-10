@@ -3,8 +3,8 @@
 
 ## [Page](pages/index.md)
 ## [Extensions](extensions/index.md)
-### [Modules](extensions/modules.md)
 ### [Contents](extensions/contents.md)
+### [Modules](extensions/modules.md)
 ### [Layouts](extensions/layouts.md)
 ### [Themes](extensions/themes.md)
 
