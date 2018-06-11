@@ -1,5 +1,5 @@
 # Pages
-Page is a basic building block of the Deviser Platform which contains modules and contents. To create a page go to **Admin -> Page Management** and add a page, [read more](pages/index.md). Page always has three modes: View, Edit and Layout. To understand the concepts, [read more](concepts.md)
+Page is a basic building block of the Deviser Platform which contains modules and contents. To create a page go to **Admin -> Page Management** and add a page. Page always has three modes: View, Edit and Layout. To understand the concepts, [read more](../../concepts.md)
 This section explains Edit mode of a page. 
 
 ## Edit page

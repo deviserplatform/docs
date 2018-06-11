@@ -6,6 +6,7 @@
 ### [Contents](extensions/contents.md)
 ### [Modules](extensions/modules.md)
 ### [Layouts](extensions/layouts.md)
+### [Properties](extensions/properties.md)
 ### [Themes](extensions/themes.md)
 
 
