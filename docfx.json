@@ -47,6 +47,14 @@
         ]
       }
     ],
+    "globalMetadata": {
+      "_appTitle": "DocFX website",
+      "_gitContribute": {
+        "repo": "https://github.com/org/repo",
+        "branch": "dev",
+        "apiSpecFolder": "docs-ref-overwrite"
+      }
+    },
     "dest": "_site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
