@@ -7,7 +7,7 @@ Content type is schema of a content and it has the information about the fields,
 ### Create Content Type
 To create a content type navigate to **Admin (click the Deviser logo on top left corner) -> Extensions -> Content Types** Type which opens management view of content types as shown below.
 
-<video autoplay muted loop>
+<video class="video-popup" autoplay muted loop>
   <source src="../../assets/videos/Content_OpenContentManagement.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
@@ -17,7 +17,7 @@ To create a content type navigate to **Admin (click the Deviser logo on top left
 
 Here, content types can be created, updated and activated/deactivated. For each content type, one or more properties can be added as shown below. Creating and managing properties are explained in [properties](properties.md) section.
 
-<img src="../../assets/images/Content_ContentManagementEdit.png">
+<img class="img-popup" src="../../assets/images/Content_ContentManagementEdit.png">
 
 >[!NOTE]
 >Here, name of the content type should exactly match with the template nams that will be explained in next section.
@@ -25,7 +25,7 @@ Here, content types can be created, updated and activated/deactivated. For each 
 ## Content Templates
 Each content type has edit and view templates which are located in `[ApplicationRoot]/Sites/Default/Themes/Skyline/ContentTypes/` as shown below. 
 
-<img src="../../assets/images/Content_ContentTemplates.png">
+<img class="img-popup" src="../../assets/images/Content_ContentTemplates.png">
 
 Skyline is the default theme shipped with platform.
 

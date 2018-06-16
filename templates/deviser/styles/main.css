@@ -18,3 +18,11 @@
     max-width: 100%;
     margin: 20px 0;
 }
+
+img.img-popup {
+    cursor: pointer;
+}
+
+.mfp-iframe-holder .mfp-content{
+    max-width: 1366px;;
+}

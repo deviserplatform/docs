@@ -6,7 +6,7 @@ Modules are extension of ASP.NET MVC Areas, read more about <a href="https://doc
 ## Module Management
 All modules are manged using module management. Navigate to **Admin (click the Deviser logo on top left corner) -> Extensions -> Module Management** to open module management as shown below.
 
-<img src="../../assets/images/Module_ModuleManagement.png">
+<img class="img-popup" src="../../assets/images/Module_ModuleManagement.png">
 
 In module management, all the installed modules will be displayed. Here, modules can be created, updated and activated/deactivated. Each module can have one or more module actions. 
 
@@ -16,7 +16,7 @@ In module management, all the installed modules will be displayed. Here, modules
 ## Create / Edit Module
 To open module details view, click edit button of a module. The module details view of **Security** module is shown below.
 
-<img src="../../assets/images/Module_ModuleManagementEdit.png">
+<img class="img-popup" src="../../assets/images/Module_ModuleManagementEdit.png">
 
 >[!NOTE]
 >Name of the module should be unique. Route for this module will be like this `modules/security/{controller=Home}/{action=Index}`
@@ -26,16 +26,16 @@ Module actions are the configuration that maps to the controller actions of a mo
 
 For example, the security module consist of two view actions: Register and Login and one edit action: Login Edit. Click edit button of a module action to view details of module action as shown below.
 
-<video autoplay muted loop>
+<video class="video-popup"  autoplay muted loop>
   <source src="../../assets/videos/Module_ModuleActionEdit.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
 
 Here, action name, controller name, controller name space should exactly match with the module developed as shown below
 
-<img src="../../assets/images/Module_ModuleAction.png">
+<img class="img-popup" src="../../assets/images/Module_ModuleAction.png">
 
-<img src="../../assets/images/Module_ModuleActionInModule.png">
+<img class="img-popup" src="../../assets/images/Module_ModuleActionInModule.png">
 
 For each module action, one or more properties can be added. Creating and managing properties are explained in [properties](properties.md) section.
 
@@ -46,12 +46,12 @@ For each module action, one or more properties can be added. Creating and managi
 
 Module views are located in `[ApplicationRoot]/Modules/{Module_Name}/Views/{ControllerName}/{ControllerName}/` as shown below
 
-<img src="../../assets/images/Module_ModuleViews.png">
+<img class="img-popup" src="../../assets/images/Module_ModuleViews.png">
 
 Once the module has been developed and configured, the module actions are listed in left pane of page edit mode as shown below. 
 
-<img src="../../assets/images/Module_InPageEdit.png">
+<img class="img-popup" src="../../assets/images/Module_InPageEdit.png">
 
 Module can be added to a page by drag-and-drop on configured layout which is similar to adding a content. After adding a module, in view mode, the configured module actions are invoked dynamically at runtime and the action results are loaded in the page within the placeholder as shown below.
 
-<img src="../../assets/images/Module_InPageView.png">
+<img class="img-popup" src="../../assets/images/Module_InPageView.png">
