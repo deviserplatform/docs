@@ -7,8 +7,7 @@ Deviser Platform is built on top of ASP.NET Core and Entity Framework Core. The 
 Deviser Core is a base for the platform which contains most of the core functionalities: 
 ### Data
 - **Repositories:** Respositories are used to store and retrieve data from database based on 
-<a href="https://martinfowler.com/eaaCatalog/repository.html" target="_blank">Repository Pattern</a>. Supported data providers in Deviser Platform are: SqlServer, SQLite, PostgreSQL and MySQL. 
-
+<a href="https://martinfowler.com/eaaCatalog/repository.html" target="_blank">Repository Pattern</a>. Supported data providers in Deviser Platform are: SqlServer, SQLite, PostgreSQL and MySQL.
 - **Platform Installer:** This component is used to install the platform on target machine with supported database.
 - **Module Migration:** Module Migration is an extension of EF Core Migration which maintains the separate DbContext and database migrations for the modules.
 
