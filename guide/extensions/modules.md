@@ -1,5 +1,5 @@
 # Modules
-Module is a basic building block of the platform and it is used extend the functionalities of the platform. Custom logics and functionalities are implemented and using the modules and those can be resued across the platform.
+Module is a basic building block of the platform and it is used extend the functionalities of the platform. Custom logics and functionalities are implemented using modules and those can be resued across the platform.
 
 Modules are extension of ASP.NET MVC Areas, read more about <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/areas?view=aspnetcore-2.1" target="_blank">Areas</a> and <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-2.1" target="_blank">MVC</a>. Routing for the modules are pre-defined, all the modules uses this route `modules/{area:exists}/{controller=Home}/{action=Index}`.
 
@@ -14,7 +14,7 @@ In module management, all the installed modules will be displayed. Here, modules
 >Modules are like a packages and module actions are reusable functional units displayed in edit mode of a page.
 
 ## Create / Edit Module
-To open module details view, click edit button of a module. The module details view of **Security** module is shown below.
+To open module details view, click edit button of a module. The detailed view of **Security** module is shown below.
 
 <img class="img-popup" src="../../assets/images/Module_ModuleManagementEdit.png">
 
@@ -31,7 +31,7 @@ For example, the security module consist of two view actions: Register and Login
   Your browser does not support HTML5 video.
 </video>
 
-Here, action name, controller name, controller name space should exactly match with the module developed as shown below
+Here, action name, controller name, controller namespace should exactly match with the module as shown below
 
 <img class="img-popup" src="../../assets/images/Module_ModuleAction.png">
 
@@ -40,7 +40,7 @@ Here, action name, controller name, controller name space should exactly match w
 For each module action, one or more properties can be added. Creating and managing properties are explained in [properties](properties.md) section.
 
 >[!NOTE]
->Display Name of the module action should be should be unique. Route for this module will be like this `modules/security/account/login`
+>Display Name of the module action should be unique. Route for this module will be like this `modules/security/account/login`
 
 ## Module Views
 

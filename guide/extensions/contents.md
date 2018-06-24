@@ -30,7 +30,7 @@ Each content type has edit and view templates which are located in `[Application
 Skyline is the default theme shipped with platform.
 
 ### Edit Template
-Edit template is an extension of the AngularJs template. It is used to specify fields and fields type by using dynamic nature of JavaScript and AngularJs. The name of edit template file (**slider**) and script tag id should exactly match the content type name as shown below.
+Edit template is an extension of the AngularJs template. It is used to specify one or more fields and their types by using dynamic nature of JavaScript and AngularJs. The name of edit template file (**slider**) and script tag id should exactly match the content type name as shown below.
 
 [!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/Edit/Slider.cshtml?range=1-1)]
 
@@ -38,7 +38,7 @@ In the edit template of slider content type is shown below.
 
 [!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/Edit/Slider.cshtml?range=52-61)]
 
-This slider edit template specifies **title**(text), **description**(multiline text), **imageUrl** and **imageAltText**(image) fields. `dev-image-manager` is a AngularJs component (directives) which is used to upload/select image to the content type.
+This slider edit template specifies **title**(text), **description**(multiline text), **imageUrl** and **imageAltText**(image) fields. `dev-image-manager` is an AngularJs component (directives) which is used to upload/select image to the content type.
 
 In addition, the edit template provides possibilities to specify the preview template. The preview of a content type is used to display the content preview in edit mode of a page before editing a content. 
 

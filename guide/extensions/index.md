@@ -1,5 +1,5 @@
 # Extensions
-The Deviser Platform is an extensible by modules, contents, layouts and themes. Following sections explains each extensible components in detail:
+The Deviser Platform is extendable by modules, contents, layouts and themes. Following sections explains each component in detail:
 
 1. [Contents](contents.md)
 2. [Modules](modules.md)

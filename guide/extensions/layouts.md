@@ -2,7 +2,7 @@
 Layouts are the collection of placeholders which are used to position the content and modules in a page. This article explains how to manage layout types and to create, update, delete and assign a layout to a page. 
 
 ## Layout Types
-Layout type is a placeholder (HTML element which can hold any elements). Examples of layout types are wrapper, container, section, row and columns. To manage a layout type navigate to **Admin (click the Deviser logo on top left corner) -> Extensions -> Layout Types** which opens management view of layout types as shown below.
+Layout type is a placeholder (HTML element which can hold any element). Examples of layout types are wrapper, container, section, row and column. To manage a layout type navigate to **Admin (click the Deviser logo on top left corner) -> Extensions -> Layout Types** which opens management view of layout types as shown below.
 
 <img class="img-popup" src="../../assets/images/Layout_LayoutTypes.png">
 
@@ -13,7 +13,7 @@ Here, layout types can be created, updated and actvitated/deactivated. For each 
 >[!NOTE]
 >Name of the layout type should be unique.
 
-Allow layout types field used to limit only the specified layouts types be added as a child of this layout. For example, Wrapper layout type can only allow container and row layout types.
+**Allowed Layout Types** field is used to specify a parent-child relationship between layout types so that other layout types cannot be inserted inside a parent layout type. For example, Wrapper layout type can only allow container and row layout types.
 
 ## Layout Templates
 Layout templates are used to render the configured child elements, the child elements can be placeholders, contents or modules. Each layout type has a template which are located in `[ApplicationRoot]/Sites/Default/Themes/Skyline/LayoutTypes/` as shown below. 
