@@ -22,7 +22,7 @@
       },
       {
         "files": [
-          "guide/**.md",
+          "guide/**/*.md",
           "guide/**/toc.yml",
           "toc.yml",
           "*.md"
@@ -48,7 +48,7 @@
       }
     ],
     "globalMetadata": {
-      "_appTitle": "DocFX website",
+      "_appTitle": "Deviser Documentation",
       "_gitContribute": {
         "repo": "https://github.com/org/repo",
         "branch": "dev",

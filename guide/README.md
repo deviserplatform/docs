@@ -1,5 +1,4 @@
 ## Vision
-
 Develop stable, scalable and secure cross platform applications in no time.
 
 ## About

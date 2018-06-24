@@ -1,7 +1,7 @@
 # Architecture
 Deviser Platform is built on top of ASP.NET Core and Entity Framework Core. The platform consist of three major blocks: Deviser Core, Extensions and Web Interface. 
 
-<img src="assets/images/DeviserArchitecture.svg">
+<img src="../assets/images/DeviserArchitecture.svg">
 
 ## Deviser Core
 Deviser Core is a base for the platform which contains most of the core functionalities: 
@@ -35,7 +35,7 @@ Web Interface is the UI layer of the deviser platform which is resposible for ha
 # Concepts
 This section explains overview and basic concepts of the Deviser Platform. The following illustration shows the concepts visually:
 
-<img src="assets/images/PageConcept.svg" >
+<img src="../assets/images/PageConcept.svg" >
 
 Page is an basic building block of the platform, a typical page contains: Header Componenets, Layout, Modules and Contents. Each page has three modes: View, Edit and Layout.
 

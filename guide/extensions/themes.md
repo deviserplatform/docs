@@ -23,7 +23,7 @@ For example this code
 loads the `/lib/jquery/dist/jquery.js` JavaScript in head section of the pages used by **Default.cshtml** theme.
 
 ## Other Components
-Themes has some useful components such as Menu, BreadCrumb and Language switcher
+Themes has some useful components such as Menu and Language switcher
 
 ### Menu
 
