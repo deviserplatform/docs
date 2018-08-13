@@ -1,5 +1,5 @@
 # Site Settings
-The Deviser platform is configurable, all the configurations / settings are stored in site settings. Navigate to `Admin (click the Deviser logo on top left corner) -> Site Settings` to open site settings as shown below.
+The Deviser platform is configurable. All the configurations / settings are stored in site settings. Navigate to `Admin (click the Deviser logo on top left corner) -> Site Settings` to open site settings as shown below.
 
 <video class="video-popup" autoplay muted loop>
   <source src="../../assets/videos/Admin_SiteSettings.mp4" type="video/mp4">
@@ -7,7 +7,7 @@ The Deviser platform is configurable, all the configurations / settings are stor
 </video>
 
 ## General
-Site general informations can be updated in this section as shown below.
+Site general settings can be updated in this section as shown below.
 
 <img class="img-popup" src="../../assets/images/Admin_SiteSettingsGeneral.png">
 

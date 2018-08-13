@@ -18,18 +18,18 @@ Here, left pane displays the tree navigation which lists all the pages in a tree
   Your browser does not support HTML5 video.
 </video>
 
-To create a page hover on a existing page or on a root level and click + button, enter the page name and desctiption and cick **Save** button.
+To create a page, hover on an existing page or on a root level and then click "+" button. Enter the page name, description and click **Save** button.
 
 ## Update Page
-To update a page select a page in tree level, update the information and click **Save** button
+To update a page, select a page from the tree view. Edit the information in "Page Detail" pane and click  **Save** button
 
 ## Remove Page
-To remove a page hover on a existing page and click remove button, it opens a confirmation dialog, click **Yes** to delete the page.
+To remove a page, hover on an existing page and click remove button. A confirmation dialog opens up, click **Yes** to delete the page.
 
-## Page Permissions
-Page permissions is a role based permission management component, it diplayes all the available roles where edit and view permissions can be granted or removed for a selected page.
+## Page Permission
+Page permission is a role based permission management component. As described in concepts, a page has two modes: view and edit. Here, administrator can grant view and edit permissions for a page based on the user roles.
 
 <img class="img-popup" src="../../assets/images/Admin_PagePermissions.png">
 
 >[!NOTE]
->By default, page permissions are inherited to modules and contents, those can be overridden by the modules and content permissions.
+>By default, page permissions are inherited to modules and contents. However, if required those inherited permissions can be overridden by the modules and content permissions.

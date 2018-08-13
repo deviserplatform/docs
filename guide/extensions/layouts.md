@@ -1,5 +1,5 @@
 # Layouts
-Layouts are the collection of placeholders which are used to position the content and modules in a page. This article explains how to manage layout types and to create, update, delete and assign a layout to a page. 
+Layouts are the collection of placeholders which are used to position the contents and modules in a page. This article explains how to manage layout types and to create, update, delete and assign a layout to a page. 
 
 ## Layout Types
 Layout type is a placeholder (HTML element which can hold any element). Examples of layout types are wrapper, container, section, row and column. To manage a layout type navigate to **Admin (click the Deviser logo on top left corner) -> Extensions -> Layout Types** which opens management view of layout types as shown below.
@@ -21,7 +21,7 @@ Layout templates are used to render the configured child elements, the child ele
 <img class="img-popup" src="../../assets/images/Layout_LayoutTemplates.png">
 
 >[!NOTE]
->Here, name of the content type should exactly match with the template nams that will be explained in next section.
+>Here, name of the content type should exactly match with the template name which will be explained in next section.
 
 The layout template is based on Razor template which contains the property accessors and HTML element that wraps the child. For example, column layout is shown below
 

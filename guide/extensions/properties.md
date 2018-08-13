@@ -1,5 +1,5 @@
 # Properties
-Properties are list of attributes which can be used in content types or modules. A property can be single value attribute (e.g css class of a div) or a list attribute (e.g. vertical-alignment). 
+Properties are list of attributes which can be used in content types or modules. A property can be a single value attribute (e.g css class of a div) or a list attribute (e.g. vertical-alignment). 
 
 ## Create Property
 To create a property, navigate to **Admin (click the Deviser logo on top left corner) -> Extensions -> Properties**, it will display all properties as shown below.
