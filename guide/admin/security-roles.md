@@ -1,5 +1,5 @@
 # Security Roles
-Permission in this platfomrs are based on security roles. To view all security roles, navigate to `Admin (click the Deviser logo on top left corner) -> Security Roles` which list all available security roles.
+Permissions in this platform are based on security roles. To view all security roles, navigate to `Admin (click the Deviser logo on top left corner) -> Security Roles` which lists all available security roles.
 
 <video class="video-popup" autoplay muted loop>
   <source src="../../assets/videos/Admin_SecurityRoles.mp4" type="video/mp4">

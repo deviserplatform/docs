@@ -4,7 +4,7 @@ A Theme is a wrapper for a page and layout which contains wrapper element and cl
 The client dependencies are set of CSS and JavaScript libraries
 
 # How to create a theme
-Themes are based on Razor templates. To Create a theme file, navigate to 
+Themes are based on Razor templates. To create a theme file, navigate to `[ApplicationRoot]/Sites/Default/Themes/Skyline/` folder and copy template file `Default.cshtml`
 
 ## Client Dependency
 The client dependeny is used to manage and load the CSS and JavaScripts required by the pages, modules and contents. To load the CSS and JavaScripts require tag helpers are used. 

@@ -7,23 +7,23 @@ User management is used to manage the users and their roles. Navigate to `Admin 
 </video>
 
 ## Create User
-To create a new user click **New User** button, enter the first name, last name, email and password and click **Submit** button.
+To create a new user, click **New User** button. Enter the first name, last name, email and password and click **Submit** button.
 
 <img class="img-popup" src="../../assets/images/Admin_NewUser.png">
 
 ## Update User
-Edit a user and navigate to profile tab to update user information. 
+To update user information, edit the user and navigate to profile tab . 
 
 <img class="img-popup" src="../../assets/images/Admin_EditUsers.png">
 
-To change password, edit a user and navigate to password reset tab.
+To change password, edit the user and navigate to password reset tab.
 
 <img class="img-popup" src="../../assets/images/Admin_UserPasswordReset.png">
 
 ## User Roles
-To add or remove roles for a user, edit a user and navigate to roles tab as shown below.
+To add or remove roles for the user, edit the user and navigate to roles tab as shown below.
 
 <img class="img-popup" src="../../assets/images/Admin_UserRoles.png">
 
 ## Delete User
-Navigate to users over view page and click delete button to delete a user.
+Navigate to users overview page. Select a user and click delete button.

@@ -1,7 +1,7 @@
 # Recycle Bin
 Recycle bin has all the deleted items including pages, modules, contents and layout. Those can be removed permanently or restored. 
 
-Navigate to `Admin (click the Deviser logo on top left corner) -> Recycle Bin` to open recyle bin as shown below.
+To open a recycle bin as shown below, Navigate to `Admin (click the Deviser logo on top left corner) -> Recycle Bin`.
 
 <video class="video-popup" autoplay muted loop>
   <source src="../../assets/videos/Admin_Recyclebin.mp4" type="video/mp4">
