@@ -112,14 +112,6 @@ DocFX requires the .NET Framework on Windows, or Mono for Linux or macOS.
 
 * Run **docfx** in the `docs\` directory to build the site, and **docfx-serve** to view the site at `http://localhost:8080`.
 
-## Voice and tone
-
-Our goal is to write documentation that is easily understandable by the widest possible audience. To that end we have established guidelines for writing style that we ask our contributors to follow. For more information, see [Voice and tone guidelines](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) in the .NET repo.
-
-## Microsoft Writing Style Guide
-
-The [Microsoft Writing Style Guide](https://docs.microsoft.com/style-guide/welcome/) provides writing style and terminology guidance for all forms of technology communication, including the ASP.NET Core documentation.
-
 ## Redirects
 
 If you delete an article, change its file name, or move it to a different folder, create a redirect so that people who bookmarked the article won't get 404s.  Add redirects to the [master redirect file](https://github.com/deviserplatform/Docs/blob/master/.openpublishing.redirection.json).
