@@ -50,7 +50,7 @@
     "globalMetadata": {
       "_appTitle": "Deviser Documentation",
       "_gitContribute": {
-        "repo": "https://github.com/org/repo",
+        "repo": "https://github.com/deviserplatform/docs",
         "branch": "dev",
         "apiSpecFolder": "docs-ref-overwrite"
       }
