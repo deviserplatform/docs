@@ -3,21 +3,38 @@
 >[!NOTE]
 >This guide assumes that readers is familier with ASP.NET Core, C#, any of the supported Databases and Operating Systems mentioned below.
 
-## Requirements
-Deviser Platform is developed on .NET Core and the front-end build tool is based on node.js framework. Therefore, kindly make sure you have installed following frameworks: 
+## How to install from package
+1. Make sure that <a href="https://www.microsoft.com/net/download" target="_blank">.NET Core SDK 2.1</a> has been installed
+2. Download the package from github [release](https://github.com/deviserplatform/deviserplatform/releases)
+3. Open terminal and enter the command `dotnet Deviser.WI.dll`
+4. Open `http://localhost:5000`
+5. Follow the installation steps
+6. Once the Deviser Platform has been installed, start adding contents and modules. Read more on [Page](pages/index.md)
 
+## How to install from source
+### Prerequisites
+Deviser Platform is developed on .NET Core and the front-end build tool is based on node.js framework. Therefore, kindly install the following frameworks: 
 1. Install <a href="https://www.microsoft.com/net/download" target="_blank">.NET Core SDK 2.1</a>
 2. Install <a href="https://nodejs.org" target="_blank">Node.js</a>
 3. Install bower `npm install -g bower` 
 4. Install gulp-cli `npm install --global gulp-cli`
+5. Choose an editor ([Visual Studio](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/))
 
-## How to install
-1. Download the package
-2. Open terminal and enter the command `dotnet run`
-3. Open `http://localhost:5000`
-4. Follow the installation steps
+### Build from source (Visual Studio)
+1. Clone this repository
+`git clone https://github.com/deviserplatform/deviserplatform.git`
+2. Open DeviserPlatform.sln. Once opened packages will be installed, this may take few minutes
+3. Run the Deviser.WI application
+4. Follow the Deviser Platform installation steps
 5. Once the Deviser Platform has been installed, start adding contents and modules. Read more on [Page](pages/index.md)
 
+### Build from source (Visual Studio Code)
+1. Clone this repository
+`git clone https://github.com/deviserplatform/deviserplatform.git`
+2. Run Deviser Platform 
+`dotnet run`
+3. Follow the Deviser Platform installation steps
+4. Once the Deviser Platform has been installed, start adding contents and modules. Read more on [Page](pages/index.md)
 
 
 ## Suppoted Operating Systems
