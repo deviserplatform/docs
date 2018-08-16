@@ -10,7 +10,3 @@ Everyone interacting in Deviser and its sub-projects' codebases, issue trackers,
 
 * **Karthick Sundararajan** - *Initial work* - [karthicksundararajan](https://github.com/karthicksundararajan)
 * **Kowsalya Kanakaraj** - *Initial work* - [kowsalyakanakaraj](https://github.com/kowsalyakanakaraj)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
