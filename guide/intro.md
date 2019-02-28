@@ -6,7 +6,7 @@ Deviser is an open-source unique platform to develop modern web applications and
 ### What does this project do?
 1. Provides a basic setup to develop modern web application. Therefore, no need to write boilerplate codes on every new projects.
 2. Accelerates development speed by reusing the code as much as possible.
-3. Offers most flexible templates and layouts based on razon syntax.
+3. Offers most flexible templates and layouts based on razor syntax.
 
 ### Target of Audience
 1. Non technical users to manage and publish web contents.
