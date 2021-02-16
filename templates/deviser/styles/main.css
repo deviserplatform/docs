@@ -13,12 +13,20 @@ article li,article  p{
 
 .navbar-brand{
     width: 180px;
-    padding-top: 8px;
+    margin-right: 2rem;
 }
 
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover{
     color:inherit;
     background-color: inherit; 
+}
+
+.breadcrumb-container{
+    margin-left: 1rem;
+}
+
+.breadcrumb-container{
+    margin-left: 1rem;
 }
 
 .article img,

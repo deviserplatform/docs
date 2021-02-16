@@ -368,7 +368,9 @@ $(function () {
         if (index > -1) {
           navrel = navbarPath.substr(0, index + 1);
         }
-        $('#navbar>ul').addClass('navbar-nav');
+        $('#navbar>ul').addClass('navbar-nav mr-auto');
+        $('#navbar>ul>li').addClass('nav-item');
+        $('#navbar>ul>li>a').addClass('nav-link');
         var currentAbsPath = util.getAbsolutePath(window.location.pathname);
         // set active item
         $('#navbar').find('a[href]').each(function (i, e) {
@@ -539,8 +541,15 @@ $(function () {
     var hierarchy = getHierarchy();
     if (hierarchy && hierarchy.length > 0) {
       var html = '<h5 class="title">In This Article</h5>'
-      html += util.formList(hierarchy, ['nav', 'bs-docs-sidenav']);
+      html += util.formSideNav(hierarchy, ['nav','flex-column']);
       $("#affix").empty().append(html);
+
+      setTimeout(() => {
+        $('[data-spy="scroll"]').each(function () {
+          var $spy = $(this).scrollspy('refresh')
+        });
+      }, 500);
+
       if ($('footer').is(':visible')) {
         $(".sideaffix").css("bottom", "70px");
       }
@@ -993,6 +1002,7 @@ $(function () {
     this.isAbsolutePath = isAbsolutePath;
     this.getDirectory = getDirectory;
     this.formList = formList;
+    this.formSideNav = formSideNav;
 
     function getAbsolutePath(href) {
       // Use anchor to normalize href
@@ -1045,6 +1055,33 @@ $(function () {
           html += '</li>';
         }
         html += '</ul>';
+        return html;
+      }
+    }
+
+    function formSideNav(item, classes) {
+      var level = 1;
+      var model = {
+        items: item
+      };
+      var cls = [].concat(classes).join(" ");
+      return getList(model, cls);
+
+      function getList(model, cls) {
+        if (!model || !model.items) return null;
+        var l = model.items.length;
+        if (l === 0) return null;
+        var html = '<nav class="level' + level + ' ' + (cls || '') + '">';
+        level++;
+        for (var i = 0; i < l; i++) {
+          var item = model.items[i];
+          var href = item.href;
+          var name = item.name;
+          if (!name) continue;
+          html += href ? '<a class="nav-link" href="' + href + '">' + name + '</a>' : name;
+          html += getList(item, cls) || '';
+        }
+        html += '</nav>';
         return html;
       }
     }

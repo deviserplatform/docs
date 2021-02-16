@@ -184,6 +184,11 @@ header .navbar {
   min-height: 40px;
 }
 
+.content.wrap {
+  margin: 0 auto;
+  width: 80%;
+}
+
 .inheritance h5, .inheritedMembers h5{
   padding-bottom: 5px;
   border-bottom: 1px solid #ccc;
@@ -216,6 +221,7 @@ article section {
 }
 .breadcrumb > li + li:before {
   content: "\00a0/";
+  margin-right: 0.3rem;
 }
 #autocollapse.collapsed .navbar-header {
   float: none;
@@ -425,7 +431,7 @@ article section {
 .sidetoc {
   position: fixed;
   width: 260px;
-  top: 150px;
+  top: 170px;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -542,7 +548,7 @@ body .toc{
 }
 .sidefilter {
   position: fixed;
-  top: 90px;
+  top: 110px;
   width: 260px;
   background-color: #f1f1f1;
   padding: 15px;
@@ -599,7 +605,7 @@ body .toc{
   overflow: hidden;
   top: 100px;
   bottom: 10px;
-  position: fixed;
+  position: sticky;
 }
 .sideaffix.shiftup {
   bottom: 70px;
@@ -622,67 +628,101 @@ body .toc{
 .sideaffix ul.nav > li > a:focus {
   background: none;
 }
+
 .affix h5 {
   font-weight: bold;
   text-transform: uppercase;
   padding-left: 10px;
   font-size: 12px;
 }
-.affix > ul.level1 {
+
+.affix nav.level2 {
+  padding-left: 1rem;
+}
+
+.affix nav.level3 {
+  padding-left: 1.5rem;
+}
+
+.affix nav.level4 {
+  padding-left: 2rem;
+}
+
+.affix a.nav-link {
+  display: block;
+  padding: .2rem 1rem;
+}
+
+.affix nav.level1 > a.nav-link.active {
+  border-left: 2px solid #337ab7;
+}
+
+.affix a.nav-link.active {
+  font-weight: bold;
+}
+
+
+/* .affix h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: 10px;
+  font-size: 12px;
+}
+.affix > nav.level1 {
   overflow: hidden;
   padding-bottom: 10px;
   height: calc(100% - 100px);
   margin-right: -20px;
 }
-.affix ul > li > a:before {
+.affix nav > a:before {
   color: #cccccc;
   position: absolute;
 }
-.affix ul > li > a:hover {
+.affix nav > a:hover {
   background: none;
   color: #666666;
 }
-.affix ul > li.active > a,
-.affix ul > li.active > a:before {
+.affix nav > a.active,
+.affix nav > a.active:before {
   color: #337ab7;
 }
-.affix ul > li > a {
+.affix nav > a {
   padding: 5px 12px;
   color: #666666;
 }
-.affix > ul > li.active:last-child {
+.affix > nav > a.active:last-child {
   margin-bottom: 50px;
 }
-.affix > ul > li > a:before {
+.affix > nav > a:before {
   content: "|";
   font-size: 16px;
   top: 1px;
   left: 0;
 }
-.affix > ul > li.active > a,
-.affix > ul > li.active > a:before {
+.affix > nav > a.active,
+.affix > nav > a.active:before {
   color: #337ab7;
   font-weight: bold;
 }
-.affix ul ul > li > a {
+.affix nav ul > a {
   padding: 2px 15px;
 }
-.affix ul ul > li > a:before {
+.affix nav ul > a:before {
   content: ">";
   font-size: 14px;
   top: -1px;
   left: 5px;
 }
-.affix ul > li > a:before,
-.affix ul ul {
+.affix nav > a:before,
+.affix nav {
   display: none;
 }
-.affix ul > li.active > ul,
-.affix ul > li.active > a:before,
-.affix ul > li > a:hover:before {
+.affix nav.active > ul,
+.affix nav.active > a:before,
+.affix nav > a:hover:before {
   display: block;
   white-space: nowrap;
-}
+} */
 .codewrapper {
   position: relative;
 }
