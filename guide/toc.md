@@ -2,6 +2,7 @@
 # [Concepts](concepts.md)
 # [Get Started](get-started.md)
 
+## [Deviser Admin](deviser-admin/index.md)
 ## [Page](pages/index.md)
 ## [Extensions](extensions/index.md)
 ### [Contents](extensions/contents.md)

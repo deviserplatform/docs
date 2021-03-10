@@ -1,0 +1,34 @@
+{
+  "name": "docfx-watch",
+  "version": "1.0.0",
+  "description": "This project provides the source for [Deviser documentation site](https://www.deviser.io/docs/guide/intro.html). See the [Contributing Guide](CONTRIBUTING.md) and the issues list if you would like to help out.",
+  "main": "index.js",
+  "dependencies": {
+    "npm-watch": "^0.7.0"
+  },
+  "devDependencies": {},
+  "watch":{
+    "build_serve":{
+      "patterns": ["guide"],
+      "extensions": "md",
+      "quiet": true,
+      "legacyWatch": true,
+      "delay": 2500,
+      "runOnChangeOnly": false
+    }
+  },
+  "scripts": {    
+    "watch_docfx": "npm-watch",
+    "build_serve": "docfx build --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deviserplatform/docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deviserplatform/docs/issues"
+  },
+  "homepage": "https://github.com/deviserplatform/docs#readme"
+}

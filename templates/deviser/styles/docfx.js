@@ -59,13 +59,17 @@ $(function () {
     $('.NOTE, .TIP').addClass('alert alert-info');
     $('.WARNING').addClass('alert alert-warning');
     $('.IMPORTANT, .CAUTION').addClass('alert alert-danger');
+
+    $('.alert-info h5').prepend('<svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>');
+    $('.alert-warning h5').prepend('<svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>');
+    $('.alert-danger h5').prepend('<svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-octagon"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>');
   }
 
   // Enable anchors for headings.
   (function () {
     anchors.options = {
       placement: 'left',
-      visible: 'touch'
+      visible: 'hover'
     };
     anchors.add('article h2:not(.no-anchor), article h3:not(.no-anchor), article h4:not(.no-anchor)');
   })();
@@ -117,6 +121,58 @@ $(function () {
 
       block.innerHTML = lines.join('\n');
     });
+
+    $("code.hljs").each(function () {
+      var $this = $(this);
+      var language = $this.attr("class").split(" ")[0].split("-")[1].toUpperCase();
+      if (language === 'CS') {
+        language = "C#";
+      }
+      if (language === 'JS') {
+        language = "JavaScript";
+      }
+      var $codeHeader = $(
+        '<div class="code-header">' +
+        '    <span class="language">' + language + '</span>' +
+        '    <button type="button" class="action" aria-label="Copy code">' +
+        '		<span class="icon"><span class="glyphicon glyphicon-duplicate" role="presentation"></span></span>' +
+        '		<span>Copy</span>' +
+        '		<div class="successful-copy-alert is-transparent" aria-hidden="true">' +
+        '			<span class="icon is-size-large">' +
+        '				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>' +
+        '			</span>' +
+        '		</div>' +
+        '	</button>' +
+        '</div>'
+      );
+      $this.closest("pre").before($codeHeader);
+      $codeHeader.find("button").click(function () {
+        copyToClipboard($this.closest("pre").text());
+        var successAlert = $(this).find(".successful-copy-alert");
+        successAlert.removeClass("is-transparent");
+        setTimeout(function () { successAlert.addClass("is-transparent"); }, 2000);
+      });
+    });
+
+    function copyToClipboard(text) {
+      // Create a textblock and assign the text and add to document
+      var el = document.createElement('textarea');
+      el.value = text;
+      document.body.appendChild(el);
+      el.style.display = "block";
+
+      // select the entire textblock
+      if (window.document.documentMode)
+        el.setSelectionRange(0, el.value.length);
+      else
+        el.select();
+
+      // copy to clipboard
+      document.execCommand('copy');
+
+      // clean up element
+      document.body.removeChild(el);
+    }
   }
 
   // Support full-text-search
@@ -541,7 +597,7 @@ $(function () {
     var hierarchy = getHierarchy();
     if (hierarchy && hierarchy.length > 0) {
       var html = '<h5 class="title">In This Article</h5>'
-      html += util.formSideNav(hierarchy, ['nav','flex-column']);
+      html += util.formSideNav(hierarchy, ['nav', 'flex-column']);
       $("#affix").empty().append(html);
 
       setTimeout(() => {
@@ -553,7 +609,7 @@ $(function () {
       if ($('footer').is(':visible')) {
         $(".sideaffix").css("bottom", "70px");
       }
-      $('#affix a').click(function() {
+      $('#affix a').click(function () {
         var scrollspy = $('[data-spy="scroll"]').data()['bs.scrollspy'];
         var target = e.target.hash;
         if (scrollspy && target) {
