@@ -1,11 +1,8 @@
 # Deviser Admin
-Deviser Admin is used to build backend admin user interfaces (UI) with few lines of code. An admin model can be built using fluent API to build admin UI and required Web APIs for the admin UI. An admin model can be created either directly from an EF Core data context or using an admin service. 
-EF Core Data context method is a basic approach where CRUD operations can be built. On other hand, customized UI model can be built using an admin service. Admin UI can be built with two different approaches:
+Deviser Admin is a low-code framework for building backend admin user interfaces (UI) with few lines of code. Admin UIs are generated based on an UI model and it can be built using fluent API. In addition to the admin UIs, Web APIs are also generated from the UI model. An UI model can be created either directly from an EF Core data context or using an admin service. EF Core Data context method is a basic approach where CRUD operations can be built. On other hand, customized UI model can be built using an admin service. These two approaches are explained in the following sections.
 
 ## Database Context
-To build a less complex admin UI for a new or an existing database, database context approach can be used. 
-
-Data Context Illustration 
+In this approach, an admin UI can be built from a new or an an existing database. Here, an Entity Framework Core (EF Core) datbase context will be used to build an admin UI.
 
 <svg width="500" version="1.1" viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
  <metadata>
@@ -67,36 +64,132 @@ Data Context Illustration
  </g>
 </svg>
 
-
 ### Create Deviser Module
 Create a deviser module project with database context as explained in this section.
 
-#### Implement `IAdminConfigurator<MyDbContext>`
+### Implement IAdminConfigurator
+Implement a class with the interface `IAdminConfigurator<MyDbContext>`. The `ConfigureAdmin()` method is used to build Admin UI model.
 
-Implement a class with interface `IAdminConfigurator<MyDbContext>`. `ConfigureAdmin()` method is used to build Admin UI model.
+```cs
+public class AdminConfigurator : IAdminConfigurator<BlogDbContext>
+{
+    public void ConfigureAdmin(IAdminBuilder adminBuilder)
+    {
+        adminBuilder.MapperConfiguration = BlogMapper.MapperConfiguration;
 
-[ADMINCONFIGURATOR CODE]
+        adminBuilder.Register<DTO.Post>(modelBuilder =>
+        {
+            modelBuilder.GridBuilder.Title = "Posts";
+            modelBuilder.FormBuilder.Title = "Post";
+
+            modelBuilder.GridBuilder
+                .AddField(p => p.Title)
+                .AddField(p => p.Category)
+                .AddField(p => p.Tags)
+                .AddField(p => p.CreatedOn, option => option.Format = "dd.MM.yyyy")
+                .AddField(p => p.CreatedBy, option => option.DisplayName = "Author");
+
+            modelBuilder.FormBuilder
+                .AddKeyField(p => p.Id)
+                .AddField(p => p.Title)
+                .AddField(s => s.Summary)
+                .AddField(s => s.Thumbnail)
+                .AddField(s => s.Content)
+                .AddSelectField(s => s.Category, expr => expr.Name)
+                .AddInlineMultiSelectField<DTO.Tag>(s => s.Tags, expr => expr.Name)
+                .AddField(p => p.CreatedOn, option => option.Format = "dd.MM.yyyy");
+            
+            modelBuilder.FormBuilder
+                .Property(p => p.Tags)
+                .AddItemBy(t => t.Name);
+            
+            modelBuilder.AddChildConfig(s => s.Comments, (childForm) =>
+            {
+                childForm.FormBuilder
+                .AddKeyField(c => c.Id)
+                .AddField(c => c.UserName)
+                .AddField(c => c.Comment)
+                .AddField(c => c.CreatedOn)
+                .AddField(c => c.IsApproved);
+            });
+        });
+
+        adminBuilder.Register<DTO.Category>(modelBuilder =>
+        {
+            modelBuilder.GridBuilder
+                .AddField(p => p.Name);
+
+            modelBuilder.FormBuilder
+                .AddKeyField(p => p.Id)
+                .AddField(p => p.Name);
+        });
+
+        adminBuilder.Register<DTO.Tag>(modelBuilder =>
+        {
+            modelBuilder.GridBuilder
+                .AddField(p => p.Name);
+
+            modelBuilder.FormBuilder
+                .AddKeyField(p => p.Id)
+                .AddField(p => p.Name);
+        });
+
+    }
+}
+```
 
 >[!NOTE]
->A deviser module can have only one implementation of `IAdminConfigurator`, but it can have one or more admin page. Each admin page is registered by a class type (usually a DTO) and it should be unique in a configurator.
+>A deviser module can have only one implementation of `IAdminConfigurator`, but it can have one or more admin pages. Each admin page is registered by a class type (usually a DTO) and it should be unique in a `IAdminConfigurator` implementation.
 
-`IAdminBuilder.Register<TModel>()` method registers a admin page for the model `TModel`. `ModelBuilder API` on this method has `GridBuilder` and `FormBuilder` to build Grid and Form respectively. In addition, parent-child relationship can be built using child config.
+`IAdminBuilder.Register<TModel>()` method registers a admin page for the model `TModel`. `ModelBuilder` API on this method has `GridBuilder` and `FormBuilder` API to build Grid and Form respectively. In addition, parent-child relationship can be built using `ModelBuilder.AddChildConfig()` method.
 
 >[!NOTE]
->A KeyField is must for an admin page. It can either declared in `GridBuilder` or `FormBuilder`.
+>A KeyField is must for an admin page. It can be either declared in `GridBuilder` or `FormBuilder`.
 
 ### Configure Mapping using AutoMapper
 Create a IMapper using Automapper. For example:
-[AUTOMAPPER CODE]
-#### Why mapping is required?
-Exposing all fields (in particular audit and secure fields) from a database to UI layer or Web API layer is not secure as well not a good practice. Therefore, mapping a DTOs (Data Transfer Objects) from entity models in database context allows to hide additional fields. In addition, this approach decouples the presentation and the database layer. 
+
+```cs
+public class BlogMapper
+{
+    public static MapperConfiguration MapperConfiguration;
+    public static IMapper Mapper;
+    static BlogMapper()
+    {
+        MapperConfiguration = new MapperConfiguration(cfg =>
+        {
+            cfg.CreateMap<Post, DTO.Post>().ReverseMap();
+            cfg.CreateMap<Tag, DTO.Tag>().ReverseMap();
+            cfg.CreateMap<Comments, DTO.Comments>().ReverseMap();
+            cfg.CreateMap<Category, DTO.Category>().ReverseMap();
+        });
+        Mapper = MapperConfiguration.CreateMapper();
+    }
+}
+```
+
+>[!NOTE]
+>**Why mapping is required?**
+> Exposing all fields (in particular audit and secure fields) from data layer to UI layer or Web API layer is not secure as well not a best practice. Therefore, mapping from data models to DTOs (Data Transfer Objects) allows to hide audit/secure fields. In addition, this approach decouples the data layer and UI layer. 
 
 ### Create AdminController
-Finally, create a AdminController class inherits `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in previous step.
-`TAdminConfigurator` should implement IAdminConfigurator interface.
+Finally, create a `AdminController` class inherits `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in previous step.
+`TAdminConfigurator` should implement `IAdminConfigurator` interface.
+
+```cs
+[Module("DemoAdminBlog")]
+public class AdminController : AdminController<AdminConfigurator>
+{
+    public AdminController(IServiceProvider serviceProvider)
+        : base(serviceProvider)
+    {
+
+    }
+}
+```
 
 ## Admin Services
-This is another approach that allows to build more customized admin UI for an existing .NET API. Following illustration shows the admin service.
+This approach allows to build more customized admin UI from an existing .NET API. Following illustration shows the admin service.
 
 <svg width="500" version="1.1" viewBox="0 0 190 120" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
  <metadata>
@@ -155,19 +248,15 @@ This is another approach that allows to build more customized admin UI for an ex
 Create a deviser module project with database context as explained in the module section.
 
 ### Implement IAdminConfigurator
-Implement a class with interface `IAdminConfigurator`. `ConfigureAdmin()` method is used to build Admin UI model.
+Implement a class with interface `IAdminConfigurator`. This interface has method `ConfigureAdmin()` which is used to build an UI model.
 
-Similar to the database context approach, `IAdminBuilder.Register<TModel, TAdminService>()` registers a admin page for the model TModel and this admin page can be customized by implementation of `TAdminService`. The `TAdminService` class should implement interface `IAdminService<TModel>` and this class has methods to perform CRUD operations on the specified model. 
+Interface `IAdminBuilder` have following methods to build customized UI: 
+1. `IAdminBuilder.Register<TModel, TAdminService>()` method registers a admin page for the model `TModel` which has a **grid** and a **form**. The admin page can be customized by a class `TAdminService` which implements interface `IAdminService<TModel>`. This class has methods to perform CRUD operations on the specified UI model.
+2. `IAdminBuilder.RegisterGrid<TModel, TAdminGridService>()` registers a admin page for model `TModel` which has **only grid**. The grid can be customized by class `TAdminGridService` which implements interface `IAdminGridService<TModel>`. This class has methods to perform operations on the grid.
+3. `IAdminBuilder.RegisterForm<TModel, TAdminFormService>()` registers a admin page for model `TModel` which has **only form**. This form can be customized by class `TAdminFormService` which implements the interface `IAdminFormService<TModel>`.
+4. `IAdminBuilder.RegisterTreeAndForm<TModel, TAdminGridService>()` registers a admin page for model `TModel` which has a **tree** and a **form**. Both the tree and form can be customized by class `TAdminTreeService` which implements the interface `IAdminFormService<TModel>`
 
-Admin Services Illustration
-Admin Service -> UI Model -> REST services -> Admin UI
-
-1. `IAdminBuilder.RegisterGrid<TModel, TAdminGridService>()` registers a admin page for model TModel which has only the grid. The grid can be customized by class 
-2. `TAdminGridService` which implements interface `IAdminGridService<TModel>`. This class has methods to perform operations on the grid.
-3. `IAdminBuilder.RegisterForm<TModel, TAdminFormService>()` registers a admin page for model TModel which has only form. This form can be customized by the class `TAdminFormService` which implements the interface `IAdminFormService<TModel>`.
-4. `IAdminBuilder.RegisterTreeAndForm<TModel, TAdminGridService>()` registers a admin page for model TModel which has a tree and a form. Both the tree and form can be customized by class `TAdminTreeService` which implements the interface `IAdminFormService<TModel>`
-
-The Deviser Admin offers following interfaces to build an admin service: 
+The Deviser Admin provides following interfaces to build an admin service: 
 - `IAdminService<TModel>` is used to build an admin UI with customized CRUD. It includes: 
     - A grid view to list all records
     - A Form to create a new record and to edit an existing record
@@ -177,15 +266,171 @@ The Deviser Admin offers following interfaces to build an admin service:
     - A tree view to list all records in a tree view 
     - A form to create a new record and to edit an existing record.
 
+```cs
+public class AdminConfigurator : IAdminConfigurator
+{
+    public void ConfigureAdmin(IAdminBuilder adminBuilder)
+    {
+        adminBuilder.Register<Employee, EmployeeAdminService>(modelBuilder =>
+        {
+            modelBuilder.GridBuilder.Title = "Employee";
+            modelBuilder.FormBuilder.Title = "Employee Details";
+
+            modelBuilder.GridBuilder
+                .AddField(c => c.Name)
+                .AddField(c => c.Designation)
+                .AddField(c => c.Email)
+                .AddField(c => c.Nationality)
+                .AddField(c => c.IsActive, option =>
+                {
+                    option.DisplayName = "Is Active";
+                    option.IsTrue = "Active";
+                    option.IsFalse = "In Active";
+                });
+
+            modelBuilder.GridBuilder.DisplayFieldAs(c => c.IsActive, LabelType.Badge, c => c.IsActiveBadgeClass);
+
+            modelBuilder.FormBuilder
+                .AddKeyField(c => c.Id)
+                .AddField(c => c.Name, option => { option.EnableIn = FormMode.Create; })
+                .AddField(c => c.Designation)
+                .AddField(c => c.Email, option => option.ValidationType = ValidationType.Email)
+                .AddField(c => c.IsActive)
+                .AddSelectField(c => c.Nationality);
+
+            modelBuilder.FormBuilder.Property(c => c.Nationality).HasLookup(sp => sp.GetService<EmployeeAdminService>().GetCountries(),
+                ke => ke.Code,
+                de => de.Name);
+        });
+
+        adminBuilder.RegisterGrid<Customer, CustomerAdminGridService>(builder =>
+        {
+            builder.Title = "Customers";
+
+            builder
+                .AddKeyField(c => c.Id)
+                .AddField(c => c.OrderId)
+                .AddField(c => c.Name)
+                .AddField(c => c.Email)
+                .AddField(c => c.OrderDate)
+                .AddField(c => c.OrderStatus)
+                .AddField(c => c.ShipDate)
+                .AddField(c => c.ShipCountry);
+
+            builder.Property(c => c.ShipCountry).HasLookup(sp => sp.GetService<EmployeeAdminService>().GetCountries(),
+                ke => ke.Code,
+                de => de.Name);
+
+            builder.Property(c => c.OrderStatus).HasLookup(sp => OrderStatus.OrderStatuses,
+                ke => ke.Id,
+                de => de.Name);
+
+            builder.DisplayFieldAs(c => c.OrderStatus, LabelType.Badge, c => c.OrderStatusClass);
+
+            builder.AddRowAction("MarkAsDelivered", "Mark As Delivered",
+                (provider, item) => provider.GetService<CustomerAdminGridService>().MarkDelivered(item));
+
+            builder.HideEditButton();
+        });
+
+        adminBuilder.RegisterForm<Guest, EventFormService>(builder =>
+        {
+            builder
+                    .AddFieldSet("General", fieldBuilder =>
+                    {
+                        fieldBuilder
+                            .AddKeyField(c => c.Id)
+                            .AddField(p => p.Name)
+                            .AddSelectField(p => p.Gender)
+                            .AddField(p => p.Email, option => option.ValidationType = ValidationType.Email);
+                    })
+
+                    .AddFieldSet("Dietary requirements", fieldBuilder =>
+                    {
+                        fieldBuilder
+                            .AddField(p => p.IsTakePartInDinner)
+                            .AddSelectField(p => p.FoodType);
+                    });
+
+            builder.Property(f => f.FoodType)
+                .ShowOn(f => f.IsTakePartInDinner)
+                .ValidateOn(f => f.IsTakePartInDinner);
+
+            builder.Property(f => f.Gender).HasLookup(
+                sp => Gender.Genders,
+                ke => ke.Id,
+                de => de.Name);
+
+            builder.Property(f => f.FoodType).HasLookup(
+                sp => FoodType.FoodTypes,
+                ke => ke.Id,
+                de => de.Name);
+        });
+
+        adminBuilder.RegisterTreeAndForm<Folder, FolderAdminService>(builder =>
+        {
+            builder.TreeBuilder.Title = "File Manager";
+            builder.FormBuilder.Title = "File Manager";
+            builder.TreeBuilder.ConfigureTree(p => p.Id,
+                p => p.Name,
+                p => p.Parent,
+                p => p.SubFolders,
+                p => p.SortOrder);
+
+            var formBuilder = builder.FormBuilder;
+            var adminId = Guid.Parse("5308b86c-a2fc-4220-8ba2-47e7bec1938d");
+            var urlId = Guid.Parse("bfefa535-7af1-4ddc-82c0-c906c948367a");
+            var standardId = Guid.Parse("4c06dcfd-214f-45af-8404-ff84b412ab01");
+
+            formBuilder
+                    .AddFieldSet("General", fieldBuilder =>
+                    {
+                        fieldBuilder
+                            .AddField(p => p.Name);
+                    })
+
+                    .AddFieldSet("Permissions", fieldBuilder =>
+                    {
+                        fieldBuilder.AddCheckBoxMatrix(p => p.PagePermissions,
+                            p => p.RoleId,
+                            p => p.PermissionId,
+                            p => p.Id,
+                            p => p.FolderId, typeof(Role), typeof(Permission),
+                            option => option.IsRequired = false);
+                    });
+
+            formBuilder.Property(f => f.PagePermissions).HasMatrixLookup<Role, Permission, Guid>(
+                sp => sp.GetService<IRoleRepository>().GetRoles(),
+                ke => ke.Id,
+                de => de.Name,
+                sp => sp.GetService<IPermissionRepository>().GetPagePermissions(),
+                ke => ke.Id,
+                de => de.Name);
+        });
+    }
+}
+```
+
 ### Create AdminController
-Finally, create a AdminController class inherits `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in previous step.
-`TAdminConfigurator` should implement IAdminConfigurator interface.
+Finally, create a class `AdminController` which inherits `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in the previous step. The class `TAdminConfigurator` should implement interface `IAdminConfigurator` interface.
+
+```cs
+[Module("DemoAdmin")]
+public class AdminController : AdminController<AdminConfigurator>
+{
+    public AdminController(IServiceProvider serviceProvider)
+        : base(serviceProvider)
+    {
+
+    }
+}
+```
 
 ## Grid
-`GridBuilder API` under `ModelBuilder API` is used to build admin grid. The grid can be customized API methods. 
+`GridBuilder` API under `ModelBuilder` API is used to build an admin grid. The admin grid can be customized API methods. 
 
 ### Fields
-In a grid, fields can be added by `AddField()` method. Similarly, key field can be added by AddKeyField method. Both methods accept a lambda expression to select a field.
+In a grid, fields can be added by `AddField()` method. Similarly, key field can be added by `AddKeyField()` method. Both methods accept a lambda expression to select a field.
 
 > [!div class="tabbedCodeSnippets" data-resources="OutlookServices.Calendar"]
 > ```cs
@@ -206,7 +451,7 @@ A grid field may have a select or multi-select field. Adding a lookup for select
 Above method specifies field `Nationality` has a lookup that can be provided by `EmployeeAdminService.GetCountries()` method. In addition, key and display field of the lookup is specified as Code and Name respectively.
 
 >[!NOTE]
->In case of database context approach, lookup are automatically identified by TDatabaseContext. No need to define it explicitly
+>In case of database context approach, lookups are automatically identified by `TDatabaseContext`. No need to define it explicitly
 
 ### Field Customization
 Appearance of a field in a grid can be customized by `DisplayFieldAs()` method. For example, a filed can be displayed as badge or an icon.
@@ -225,5 +470,60 @@ Grid behaviors can be customized further. For example, Edit Button of a grid ha 
 > modelBuilder.GridBuilder.AddRowAction("MarkAsDelivered", "Mark As Delivered",
 >                    (provider, item) => provider.GetService<CustomerAdminGridService>().MarkDelivered(item));
 > ```
+
+## Form
+Deviser admin provides `FormBuilder` API to build a admin form. A form can be built for an admin grid or it can be build independent of an admin grid i.e standalone admin form.
+
+## Fields
+In a form, basic fields can be added by `AddField()` method. Similarly, a key field can be added by `AddKeyField()` method. Both methods accept a lambda expression to select a field.
+
+```cs
+modelBuilder.FormBuilder
+    .AddKeyField(c => c.Id)
+    .AddField(c => c.Name)
+```
+
+>[!NOTE]
+>**Key Field**
+> A key field is mandatory for an admin model and it can be either specified in a `GridBuilder` or in a `FormBuilder` API.
+
+Similarly, a single select  filed can be added using `AddSelectField()` and a multiple select filed can be added using `AddMultiSelectField()` methods. For each single or multiple select field a lookup must be specified using `.Property(f=>f.fieldName).HasLookup()` method.
+
+```cs
+modelBuilder.FormBuilder
+    .AddKeyField(c => c.Id)    
+    .AddSelectField(c => c.Nationality);
+
+    modelBuilder.FormBuilder.Property(c => c.Nationality).HasLookup(sp => sp.GetService<EmployeeAdminService>().GetCountries(),
+        ke => ke.Code,
+        de => de.Name);
+```
+
+`HasLookup()` method accepts three parameters. First parameter expression expects the list of objects of type `TProperty`, second parameter expression is a key selector for the lookup and the third parameter expression is the display filed for the lookup.
+
+- AddFieldSet
+## Field Customization
+- Description
+- DisplayName
+- LabelOption
+- Format (DateTime)
+- IsRequired
+- MaxLength
+- ShowIn - Show/Hide Fields in both create and update or create only or update only
+- EnableIn - Enable/Disable in both create and update or create only or update only
+- ShowOn
+## Validation
+- Basic Validation
+- Condition Validation (ValidateOn)
+## LookUp – LookUp can be defined either in Grid/Form
+- Basic lookup
+- CheckBoxMatrix / MatrixLookUp
+
+## Tree
+### Display Property
+### Parent
+### Child
+### Sort Property
+
 
 

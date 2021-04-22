@@ -214,6 +214,14 @@ h6,
 .navbar {
   margin-bottom: 0;
 }
+
+code {
+  font-size: 87.5%;
+  color: inherit;
+  word-wrap: break-word;
+  background-color: #e3e3e3;
+}
+
 #wrapper {
   min-height: 100%;
   position: relative;
