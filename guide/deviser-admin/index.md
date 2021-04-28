@@ -472,11 +472,12 @@ Grid behaviors can be customized further. For example, Edit Button of a grid ha 
 > ```
 
 ## Form
-Deviser admin provides `FormBuilder` API to build a admin form. A form can be built for an admin grid or it can be build independent of an admin grid i.e standalone admin form.
+Deviser admin provides a `FormBuilder` API to build an admin form. An admin form can be built for an admin grid or fit can be build independent of an admin grid i.e standalone admin form.
 
 ## Fields
-In a form, basic fields can be added by `AddField()` method. Similarly, a key field can be added by `AddKeyField()` method. Both methods accept a lambda expression to select a field.
+In a form, fields can be added in a new line by `AddField(e => e.FieldName)` method. Similarly, the method `AddInlineField(e => e.FieldName)` is used to add a filed in the same line. A key field can be added by `AddKeyField(e => e.Id)` method. All those methods accept a lambda expression to select a field.
 
+For example, following code snipet will added a key field Id and a text field name. 
 ```cs
 modelBuilder.FormBuilder
     .AddKeyField(c => c.Id)
@@ -488,6 +489,29 @@ modelBuilder.FormBuilder
 > A key field is mandatory for an admin model and it can be either specified in a `GridBuilder` or in a `FormBuilder` API.
 
 Similarly, a single select  filed can be added using `AddSelectField()` and a multiple select filed can be added using `AddMultiSelectField()` methods. For each single or multiple select field a lookup must be specified using `.Property(f=>f.fieldName).HasLookup()` method.
+
+Admin form supports following field types:
+
+| Field Type | Methods | Property Types | Options
+| --- | --- | --- | ---
+| Text | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | None
+| Number | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `int`, `float`, `double`, `long` and `decimal` | None
+| Static Text | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `bool` | `option.FieldType = FieldType.Static`
+| CheckBox | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `bool` | None
+| Email | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.EmailAddress`
+| Password | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.Password`
+| Phone | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.Phone`
+| TextArea | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.TextArea`
+| RichText | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.RichText`
+| Date | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `DateTime` | None
+| Select | `AddSelectField(e => e.FieldName)` <br /> `AddInlineSelectField(e => e.FieldName)` | Custom type `T` | None
+| MultiSelect | `AddMultiSelectField(e => e.FieldName)` <br /> `AddInlineMultiSelectField(e => e.FieldName)` | `ICollection<T>` | None
+| RadioButton | `AddSelectField(e => e.FieldName)` <br /> `AddInlineSelectField(e => e.FieldName)` | Custom type `T` | `option => option.FieldType = FieldType.RadioButton`
+| Image | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.Image`
+| CheckBox Matrix | `AddCheckBoxMatrix(e => e.FieldName, e => e.RowKey, e => e.ColumnKey, e => e.matrixKey, e => e.ContextKey, typeof(TRow), typeof(TColumn))` | `ICollection<TRowColumn>` | None
+
+## Lookup
+Select and Multiselect fileds require a lookup configuration. For example select filed `Nationality` requires a `HasLookup()` method as shown below.
 
 ```cs
 modelBuilder.FormBuilder
@@ -501,8 +525,25 @@ modelBuilder.FormBuilder
 
 `HasLookup()` method accepts three parameters. First parameter expression expects the list of objects of type `TProperty`, second parameter expression is a key selector for the lookup and the third parameter expression is the display filed for the lookup.
 
-- AddFieldSet
-## Field Customization
+## Field Grouping
+Fields can be grouped by using `formBuilder.AddFieldSet()` method.
+
+```cs
+formBuilder
+    .AddFieldSet("General", fieldBuilder =>
+    {
+        fieldBuilder
+            .AddField(f => f.SiteName)
+            .AddField(f => f.SiteDescription, option => option.FieldType = FieldType.TextArea)
+            .AddField(f => f.SiteAdminEmail, option => option.FieldType = FieldType.EmailAddress)
+            .AddField(f => f.SiteRoot)
+            .AddField(f => f.SiteHeaderTags)
+            .AddSelectField(f => f.SiteLanguage);
+
+    });
+```
+
+## Field Options
 - Description
 - DisplayName
 - LabelOption
