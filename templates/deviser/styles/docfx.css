@@ -86,6 +86,10 @@ span.languagekeyword {
   font-weight: bold;
 }
 
+.bg-dark{
+  background-color: #1d2127 !important;
+}
+
 /* svg:hover path {
     fill: #ffffff;
 } */

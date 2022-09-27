@@ -1,8 +1,8 @@
 # Deviser Admin
-Deviser Admin is a low-code framework for building backend admin user interfaces (UI) with few lines of code. Admin UIs are generated based on an UI model and it can be built using fluent API. In addition to the admin UIs, Web APIs are also generated from the UI model. An UI model can be created either directly from an EF Core data context or using an admin service. EF Core Data context method is a basic approach where CRUD operations can be built. On other hand, customized UI model can be built using an admin service. These two approaches are explained in the following sections.
+Deviser Admin is a core feature of Deviser Platform to build backend admin user interfaces with just few lines of code. Admin UIs are generated based on an UI model that can be built using fluent API. In addition to the Admin UI, web service (web APIs) are also generated for the UI. An UI model can be created either directly from an Entity Framework (EF) Core data context or from an implementation of admin service. EF Core Data context method is a basic approach where CRUD operations for an Admin UI can be built. On other hand, customized UI model can be built using an admin service. These two approaches are explained in the following sections.
 
 ## Database Context
-In this approach, an admin UI can be built from a new or an an existing database. Here, an Entity Framework Core (EF Core) datbase context will be used to build an admin UI.
+In this approach, Deviser Admin uses an EF Core dabase context to build Admin UIs. The below diagram illustrates the datbase context approach.
 
 <svg width="500" version="1.1" viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
  <metadata>
@@ -63,6 +63,8 @@ In this approach, an admin UI can be built from a new or an an existing database
   <rect x="32.075" y="18.685" width="23.3" height="2.1182"/>
  </g>
 </svg>
+
+Follow the steps to build Admin UIs with database context approach:
 
 ### Create Deviser Module
 Create a deviser module project with database context as explained in this section.
@@ -245,7 +247,7 @@ This approach allows to build more customized admin UI from an existing .NET API
 
 
 ### Create Deviser Module
-Create a deviser module project with database context as explained in the module section.
+Create a deviser module project as explained in the module section.
 
 ### Implement IAdminConfigurator
 Implement a class with interface `IAdminConfigurator`. This interface has method `ConfigureAdmin()` which is used to build an UI model.
@@ -412,7 +414,7 @@ public class AdminConfigurator : IAdminConfigurator
 ```
 
 ### Create AdminController
-Finally, create a class `AdminController` which inherits `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in the previous step. The class `TAdminConfigurator` should implement interface `IAdminConfigurator` interface.
+Finally, create a class `AdminController` inherits from class `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in the previous step. The class `TAdminConfigurator` should implement `IAdminConfigurator` interface.
 
 ```cs
 [Module("DemoAdmin")]
@@ -448,7 +450,7 @@ A grid field may have a select or multi-select field. Adding a lookup for select
 >                    de => de.Name);
 > ```
 
-Above method specifies field `Nationality` has a lookup that can be provided by `EmployeeAdminService.GetCountries()` method. In addition, key and display field of the lookup is specified as Code and Name respectively.
+Above method specifies field `Nationality` has a lookup that can be provided by `EmployeeAdminService.GetCountries()` method. In addition, key and display fields of the lookup are specified as Code and Name respectively.
 
 >[!NOTE]
 >In case of database context approach, lookups are automatically identified by `TDatabaseContext`. No need to define it explicitly
@@ -492,7 +494,7 @@ Similarly, a single select  filed can be added using `AddSelectField()` and a mu
 
 Admin form supports following field types:
 
-| Field Type | Methods | Property Types | Options
+| Field Type | Methods | Property Types | Option
 | --- | --- | --- | ---
 | Text | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | None
 | Number | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `int`, `float`, `double`, `long` and `decimal` | None
