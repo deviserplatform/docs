@@ -1,7 +1,23 @@
 # Pages
-Page is a basic building block of the Deviser Platform which contains modules and contents. To create a page go to **Admin (click the Deviser logo on top left corner) -> Page Management** and add a page. Page always has three modes: View, Edit and Layout. To understand the page concepts, [read more](../../concepts.md). This section explains Edit mode of a page. 
+Page is a basic building block of the Deviser Platform where it can host a [Deviser Admin](../deviser-admin/index.md) UI model or [Modules](../extensions/modules.md) and [Contents](../extensions/contents.md). A page can be clasified into three types:
 
-## Edit page
+1. Admin
+2. Standard 
+3. URL
+
+## Admin Page
+An admin page can host a UI model defined in a module. 
+## Standard Page
+A standard page can host contents and modules together. Page of this type has three modes:
+
+- **View:** mode displays hosted contents and modules in a configured layout.
+- **Edit:** mode shows the edit view of a page where page editor can add/remove contents/modules in a configured layout.
+- **Layout:** mode aka **Layout Designer** which allows users to create custom layouts using layout types (placeholders) and assign it to the current page.
+
+
+To create a page go to **Admin (click the Deviser logo on top left corner) -> Page Management** and add a page. 
+
+### Edit page
 Once platform is installed and configured with database, login to the platform. After login, control bar appears on the top of the page as shown below.
 
 <img class="img-popup" src="../../assets/images/ViewMode.png">

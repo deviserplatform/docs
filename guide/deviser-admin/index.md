@@ -1,8 +1,8 @@
 # Deviser Admin
-Deviser Admin is a low-code framework for building backend admin user interfaces (UI) with few lines of code. Admin UIs are generated based on an UI model and it can be built using fluent API. In addition to the admin UIs, Web APIs are also generated from the UI model. An UI model can be created either directly from an EF Core data context or using an admin service. EF Core Data context method is a basic approach where CRUD operations can be built. On other hand, customized UI model can be built using an admin service. These two approaches are explained in the following sections.
+Deviser Admin is a core feature of Deviser Platform to build admin user interfaces with just few lines of code. Admin UIs are generated based on an UI model that can be built using fluent API. In addition to the Admin UI, web service (web APIs) are also generated for the UI. An UI model can be created either directly from an Entity Framework (EF) Core data context or from an implementation of admin service. EF Core Data context method is a basic approach where CRUD operations for an Admin UI can be built. On other hand, customized UI model can be built using an admin service. These two approaches are explained in the following sections.
 
 ## Database Context
-In this approach, an admin UI can be built from a new or an an existing database. Here, an Entity Framework Core (EF Core) datbase context will be used to build an admin UI.
+In this approach, Deviser Admin uses an EF Core dabase context to build Admin UIs. The below diagram illustrates the datbase context approach.
 
 <svg width="500" version="1.1" viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
  <metadata>
@@ -63,6 +63,8 @@ In this approach, an admin UI can be built from a new or an an existing database
   <rect x="32.075" y="18.685" width="23.3" height="2.1182"/>
  </g>
 </svg>
+
+Follow the steps to build Admin UIs with database context approach:
 
 ### Create Deviser Module
 Create a deviser module project with database context as explained in this section.
@@ -245,7 +247,7 @@ This approach allows to build more customized admin UI from an existing .NET API
 
 
 ### Create Deviser Module
-Create a deviser module project with database context as explained in the module section.
+Create a deviser module project as explained in the module section.
 
 ### Implement IAdminConfigurator
 Implement a class with interface `IAdminConfigurator`. This interface has method `ConfigureAdmin()` which is used to build an UI model.
@@ -412,7 +414,7 @@ public class AdminConfigurator : IAdminConfigurator
 ```
 
 ### Create AdminController
-Finally, create a class `AdminController` which inherits `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in the previous step. The class `TAdminConfigurator` should implement interface `IAdminConfigurator` interface.
+Finally, create a class `AdminController` inherits from class `AdminController<TAdminConfigurator>`, `TAdminConfigurator` is the class that has been created in the previous step. The class `TAdminConfigurator` should implement `IAdminConfigurator` interface.
 
 ```cs
 [Module("DemoAdmin")]
@@ -448,7 +450,7 @@ A grid field may have a select or multi-select field. Adding a lookup for select
 >                    de => de.Name);
 > ```
 
-Above method specifies field `Nationality` has a lookup that can be provided by `EmployeeAdminService.GetCountries()` method. In addition, key and display field of the lookup is specified as Code and Name respectively.
+Above method specifies field `Nationality` has a lookup that can be provided by `EmployeeAdminService.GetCountries()` method. In addition, key and display fields of the lookup are specified as Code and Name respectively.
 
 >[!NOTE]
 >In case of database context approach, lookups are automatically identified by `TDatabaseContext`. No need to define it explicitly
@@ -472,11 +474,12 @@ Grid behaviors can be customized further. For example, Edit Button of a grid ha 
 > ```
 
 ## Form
-Deviser admin provides `FormBuilder` API to build a admin form. A form can be built for an admin grid or it can be build independent of an admin grid i.e standalone admin form.
+Deviser admin provides a `FormBuilder` API to build an admin form. An admin form can be built for an admin grid or fit can be build independent of an admin grid i.e standalone admin form.
 
 ## Fields
-In a form, basic fields can be added by `AddField()` method. Similarly, a key field can be added by `AddKeyField()` method. Both methods accept a lambda expression to select a field.
+In a form, fields can be added in a new line by `AddField(e => e.FieldName)` method. Similarly, the method `AddInlineField(e => e.FieldName)` is used to add a filed in the same line. A key field can be added by `AddKeyField(e => e.Id)` method. All those methods accept a lambda expression to select a field.
 
+For example, following code snipet will added a key field Id and a text field name. 
 ```cs
 modelBuilder.FormBuilder
     .AddKeyField(c => c.Id)
@@ -488,6 +491,29 @@ modelBuilder.FormBuilder
 > A key field is mandatory for an admin model and it can be either specified in a `GridBuilder` or in a `FormBuilder` API.
 
 Similarly, a single select  filed can be added using `AddSelectField()` and a multiple select filed can be added using `AddMultiSelectField()` methods. For each single or multiple select field a lookup must be specified using `.Property(f=>f.fieldName).HasLookup()` method.
+
+Admin form supports following field types:
+
+| Field Type | Methods | Property Types | Option
+| --- | --- | --- | ---
+| Text | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | None
+| Number | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `int`, `float`, `double`, `long` and `decimal` | None
+| Static Text | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `bool` | `option.FieldType = FieldType.Static`
+| CheckBox | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `bool` | None
+| Email | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.EmailAddress`
+| Password | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.Password`
+| Phone | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.Phone`
+| TextArea | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.TextArea`
+| RichText | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.RichText`
+| Date | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `DateTime` | None
+| Select | `AddSelectField(e => e.FieldName)` <br /> `AddInlineSelectField(e => e.FieldName)` | Custom type `T` | None
+| MultiSelect | `AddMultiSelectField(e => e.FieldName)` <br /> `AddInlineMultiSelectField(e => e.FieldName)` | `ICollection<T>` | None
+| RadioButton | `AddSelectField(e => e.FieldName)` <br /> `AddInlineSelectField(e => e.FieldName)` | Custom type `T` | `option => option.FieldType = FieldType.RadioButton`
+| Image | `AddField(e => e.FieldName)` <br /> `AddInlineField(e => e.FieldName)` | `string` | `option.FieldType = FieldType.Image`
+| CheckBox Matrix | `AddCheckBoxMatrix(e => e.FieldName, e => e.RowKey, e => e.ColumnKey, e => e.matrixKey, e => e.ContextKey, typeof(TRow), typeof(TColumn))` | `ICollection<TRowColumn>` | None
+
+## Lookup
+Select and Multiselect fileds require a lookup configuration. For example select filed `Nationality` requires a `HasLookup()` method as shown below.
 
 ```cs
 modelBuilder.FormBuilder
@@ -501,8 +527,25 @@ modelBuilder.FormBuilder
 
 `HasLookup()` method accepts three parameters. First parameter expression expects the list of objects of type `TProperty`, second parameter expression is a key selector for the lookup and the third parameter expression is the display filed for the lookup.
 
-- AddFieldSet
-## Field Customization
+## Field Grouping
+Fields can be grouped by using `formBuilder.AddFieldSet()` method.
+
+```cs
+formBuilder
+    .AddFieldSet("General", fieldBuilder =>
+    {
+        fieldBuilder
+            .AddField(f => f.SiteName)
+            .AddField(f => f.SiteDescription, option => option.FieldType = FieldType.TextArea)
+            .AddField(f => f.SiteAdminEmail, option => option.FieldType = FieldType.EmailAddress)
+            .AddField(f => f.SiteRoot)
+            .AddField(f => f.SiteHeaderTags)
+            .AddSelectField(f => f.SiteLanguage);
+
+    });
+```
+
+## Field Options
 - Description
 - DisplayName
 - LabelOption

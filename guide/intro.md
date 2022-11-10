@@ -1,16 +1,15 @@
 # Introduction
 
 ### What is Deviser Platform?
-Deviser is an open-source unique platform to develop modern web applications and web content management system based on ASP.NET Core that runs on Windows, Linux and macOS . This platform enables developers to create modern web application and empowers any user groups to create dynamic contents by just drag-and-drop on a dynamic layout in no time. Deviser Platform is completely free and Open Source on Github. [Read more](https://www.deviser.io/About) about the project **Vision** and **Mission.**
+Deviser is a .NET based web framework to build web applications and web context faster than convetional approach. This web frameworks is built on top of ASP.NET, and it provides fluent APIs to build user interface (UI) models that helps you to create admin interfaces and web contents more efficiently.
 
-### What does this project do?
-1. Provides a basic setup to develop modern web application. Therefore, no need to write boilerplate codes on every new projects.
-2. Accelerates development speed by reusing the code as much as possible.
-3. Offers most flexible templates and layouts based on razor syntax.
+### What can be made out of it?
+1. Web applications can be built using [Deviser Admin]() with few lines of code.
+2. [Web contents]() can be created using drag-and-drop of contents on a layout.  
 
-### Target of Audience
-1. Non technical users to manage and publish web contents.
-2. Developers to build modular web applications faster.
-3. Front-End developers to build websites faster.
+### Who can get benefits?
+1. Developers to build modular web applications faster.
+2. Front-End developers to build websites faster.
+3. Web authors to manage and publish web contents.
 
 More excited? [Get Started here.](get-started.md)
