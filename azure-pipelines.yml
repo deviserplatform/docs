@@ -22,5 +22,10 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/_site/'
     includeRootFolder: false
     archiveFile: release.zip
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    Contents: release.zip
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
