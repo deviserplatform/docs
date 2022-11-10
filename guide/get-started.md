@@ -1,11 +1,11 @@
 # Get Started
 
 >[!NOTE]
->This guide assumes that readers is familiar with ASP.NET Core, C#, any of the supported Databases and Operating Systems mentioned below.
+>This guide assumes that readers is familiar with ASP.NET, C#, any of the supported Databases mentioned below.
 
 ## Prepare Development Environment
 
-Make sure you have installed [.NET 6.0 SDK ](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) or above. 
+Make sure you have installed <a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0" target="_blank">.NET 6.0 SDK </a> or above. 
 
 ## Creaing a Deviser Application
 This section guides you to create first Deivser Application using dotnet cli.
@@ -79,7 +79,7 @@ Fill in basic site adminitration info and click install.
 
 Wait for a while until the installation is complete. Once the installation is successfuly, web application restart is required. you need to run `dotnet run` command once again.
 
-## How to install from package
+<!-- ## How to install from package
 1. Make sure that <a href="https://www.microsoft.com/net/download" target="_blank">.NET Core SDK 2.1</a> has been installed
 2. Download the package from github [release](https://github.com/deviserplatform/deviserplatform/releases)
 3. Open terminal and enter the command `dotnet Deviser.WI.dll`
@@ -117,7 +117,7 @@ Deviser Platform is developed on .NET Core and the front-end build tool is based
 Deviser Platform is cross-platform which supports following operating systems:
 1. Windows, <a href="https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites?tabs=netcore2x" target="_blank">versions</a>
 2. macOS, <a href="https://docs.microsoft.com/en-us/dotnet/core/macos-prerequisites?tabs=netcore2x" target="_blank">versions</a>
-3. Linux, <a href="https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x" target="_blank">versions</a>
+3. Linux, <a href="https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x" target="_blank">versions</a> -->
 
 ## Supported Databases
 Deviser Platform is not only cross-platform, but also supports more databases as follows:

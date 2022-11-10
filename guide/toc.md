@@ -1,8 +1,8 @@
 # [Introduction](intro.md)
 # [Concepts](concepts.md)
 # [Get Started](get-started.md)
-# [Deviser Admin](deviser-admin/index.md)
 # [Page](pages/index.md)
+# [Deviser Admin](deviser-admin/index.md)
 
 # [Administration](admin/index.md)
 ## [Page Management](admin/page-management.md)

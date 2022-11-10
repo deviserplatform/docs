@@ -57,12 +57,4 @@ Contents are another building block of the platform and it is dynamic in nature.
 ## Module
 Module is an extension of <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/areas?view=aspnetcore-2.1" target="_blank">Areas</a> in ASP.NET Core. It enables developers to implement fully-customizable functionlities. Once the funcationalities are implemented, it can be added in any pages across the platform.
 
-## Three Modes
-Any page in this platform has three modes:
-
-- **View:** View mode renders the final UI of the configured page.
-- **Edit:** This mode shows the edit view of a page where page editor can add/remove contents/modules in a configured layout.
-- **Layout:** Layout mode is also called as **Layout Designer** which enalbes user to create custom layouts using layout types (placeholders) and assign it to current page.
-
-
     
