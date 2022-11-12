@@ -12,27 +12,35 @@ To create a content type navigate to **Admin (click the Deviser logo on top left
   Your browser does not support HTML5 video.
 </video>
 
+
+1. Click **New** to create new content type
+2. Enter the **Name**, **Label** and **Icon** for a content type
+3. Make sure to activate the content type by checking **Is Active** check box
+4. Chose the type of the content. For list (more one items) type, select **Is List** check box.
+5. Select the **Properies** that could change the behaviour of the content type when added to a page. For example, **css_class**. 
+6. Add required files in **Fields** section.
+
 >[!NOTE]
 >Name of the content type should be unique.
 
+<img class="img-popup" src="../../assets/images/Content_ContentManagementEdit.png">
+
 Here, content types can be created, updated and activated/deactivated. For each content type, one or more properties can be added as shown below. Creating and managing properties are explained in [properties](properties.md) section.
 
-<img class="img-popup" src="../../assets/images/Content_ContentManagementEdit.png">
 
 >[!NOTE]
 >Here, name of the content type should exactly match with the template nams that will be explained in next section.
 
 ## Content Templates
-Each content type has edit and view templates which are located in `[ApplicationRoot]/Sites/Default/Themes/Skyline/ContentTypes/` as shown below. 
+Each content type has a content template which are located in `[ApplicationRoot]/Sites/Default/Themes/Skyline/ContentTypes/View` as shown below. 
 
 <img class="img-popup" src="../../assets/images/Content_ContentTemplates.png">
 
 Skyline is the default theme shipped with platform.
 
-### Edit Template
-Edit template is an extension of the AngularJs template. It is used to specify one or more fields and their types by using dynamic nature of JavaScript and AngularJs. The name of edit template file (**slider**) and script tag id should exactly match the content type name as shown below.
+A content template is based on Razor view which is used to render content as the html. 
 
-[!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/Edit/Slider.cshtml?range=1-1)]
+<!-- [!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/Edit/Slider.cshtml?range=1-1)]
 
 In the edit template of slider content type is shown below.
 
@@ -46,9 +54,9 @@ In addition, the edit template provides possibilities to specify the preview tem
 
 The complete code of slider edit template is shown below.
 
-[!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/Edit/Slider.cshtml?range=1-)]
+[!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/Edit/Slider.cshtml?range=1-)] -->
 
-### View Template
+<!-- ### View Template
 The view template is based on Razor template which is used to render content as the html. The following example uses slider content and property values to render the slider based on <a href="http://idangero.us/swiper/" target="_blank">Swiper</a>.
 
-[!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/View/Slider.cshtml?range=1-)]
+[!code[Main](../../src/Sites/Default/Themes/Skyline/ContentTypes/View/Slider.cshtml?range=1-)] -->

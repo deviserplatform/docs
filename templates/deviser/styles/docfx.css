@@ -4,6 +4,11 @@ body {
   font-family: "Segoe UI", Tahoma, Helvetica, sans-serif;
   height: 100%;
 }
+
+iframe{
+  border: 1px solid #e3e3e3;
+}
+
 button,
 a {
   color: #337ab7;
@@ -990,6 +995,9 @@ footer {
 /* For code snippet line highlight */
 pre > code .line-highlight {
   background-color: #ffffcc;
+}
+.alert {
+  border-radius: 0;
 }
 
 /* Alerts */

@@ -1,5 +1,5 @@
 # Page Management
-This article explains the page management which is used to manipulate the pages. 
+Page is a basic building block of the Deviser Platform where it can host a UI model of the [Deviser Admin](../deviser-admin/index.md) or view of the [Modules](../extensions/modules.md) and [Contents](../extensions/contents.md). This article explains the how to create and manage pages. 
 
 ## Crete Page
 Navigate to `Admin (click the Deviser logo on top left corner) -> Page Management` to open the page management as shown below.
@@ -32,4 +32,4 @@ Page permission is a role based permission management component. As described in
 <img class="img-popup" src="../../assets/images/Admin_PagePermissions.png">
 
 >[!NOTE]
->By default, page permissions are inherited to modules and contents. However, if required those inherited permissions can be overridden by the modules and content permissions.
+>By default, page permissions are inherited to modules and contents (for page type **Standard**). However, if required those inherited permissions can be overridden by the modules and content permissions.
