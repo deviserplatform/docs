@@ -1,5 +1,5 @@
-# Pages
-Page is a basic building block of the Deviser Platform where it can host a [Deviser Admin](../deviser-admin/index.md) UI model or [Modules](../extensions/modules.md) and [Contents](../extensions/contents.md). A page can be clasified into three types:
+# Page
+Page is a basic building block of the Deviser Platform where it can host a UI model of the [Deviser Admin](../deviser-admin/index.md) or view of the [Modules](../extensions/modules.md) and [Contents](../extensions/contents.md). A page can be clasified into three types:
 
 1. Admin
 2. Standard 
@@ -14,20 +14,17 @@ A standard page can host contents and modules together. Page of this type has th
 - **Edit:** mode shows the edit view of a page where page editor can add/remove contents/modules in a configured layout.
 - **Layout:** mode aka **Layout Designer** which allows users to create custom layouts using layout types (placeholders) and assign it to the current page.
 
-
-To create a page go to **Admin (click the Deviser logo on top left corner) -> Page Management** and add a page. 
-
 ### Edit page
-Once platform is installed and configured with database, login to the platform. After login, control bar appears on the top of the page as shown below.
+Once the platform is installed, login to as an administrator. After login, control bar appears on the top of the page as shown below.
 
 <img class="img-popup" src="../../assets/images/ViewMode.png">
 
 
-The control bar has buttons to switch between three modes: View, Edit and Layout. Click Edit button to switch to edit mode. The edit mode of a page will be like this:
+The control bar has buttons to switch between three modes: View, Edit and Layout. Click the **Edit** button to switch to edit mode. The edit mode of a page will be like this:
 
 <img class="img-popup" src="../../assets/images/EditMode.png">
 
-In edit mode, users can add/remove contents/modules in a configured layout. Left pane of the page has all available content elements (content types) and modules. Center pane is also called stage of a page where users can drag-and-drop contents and modules into the stage. The stage always loads the configured layout. To configure layout, [read more] (layouts/index.md).
+In the edit mode, users can add/remove/move contents/modules in a configured layout. Left pane of the page has all available content elements (content types) and modules. Center pane is also called stage of a page where users can drag-and-drop contents and modules into the stage. The stage always loads the configured layout. To configure layout, [read more](../extensions/layouts.md).
 
 ### Add Content/Module
 To add a content/module, just pick a content or a module and drag-and-drop on any appropirate placeholder.
@@ -66,3 +63,6 @@ Any content or module (if edit action is configured), can be edited by clicking 
   <source src="../../assets/videos/Page_EditContent.mp4" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
+
+## URL
+A URL page simply redirects to a internal or external URL

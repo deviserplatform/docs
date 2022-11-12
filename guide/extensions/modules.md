@@ -1,7 +1,7 @@
 # Modules
 Module is a basic building block of the platform and it is used extend the functionalities of the platform. Custom logics and functionalities are implemented using modules and those can be resued across the platform.
 
-Modules are extension of ASP.NET MVC Areas, read more about <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/areas?view=aspnetcore-2.1" target="_blank">Areas</a> and <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-2.1" target="_blank">MVC</a>. Routing for the modules are pre-defined, all the modules uses this route `modules/{area:exists}/{controller=Home}/{action=Index}`.
+Modules are extension of ASP.NET MVC Areas, read more about <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/areas" target="_blank">Areas</a> and <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/overview" target="_blank">MVC</a>. Routing for the modules are pre-defined, all the modules uses this route `modules/{area:exists}/{controller=Home}/{action=Index}`.
 
 ## Module Management
 All modules are manged using module management. Navigate to **Admin (click the Deviser logo on top left corner) -> Extensions -> Module Management** to open module management as shown below.
@@ -21,8 +21,8 @@ To open module details view, click edit button of a module. The detailed view of
 >[!NOTE]
 >Name of the module should be unique. Route for this module will be like this `modules/security/{controller=Home}/{action=Index}`
 
-## Module Actions
-Module actions are the configuration that maps to the controller actions of a module (in ASP.NET MVC terms Areas). Each module action can be a view or edit action type. View action types are invoked in view mode and edit action types are invoked in edit mode.
+## Module View
+Module views are the configuration that maps to the controller actions of a module (in ASP.NET MVC terms Areas). Each module view can be a **view** or **edit** view type. **View** action types are invoked in view mode and edit action types are invoked in edit mode.
 
 For example, the security module consist of two view actions: Register and Login and one edit action: Login Edit. Click edit button of a module action to view details of module action as shown below.
 

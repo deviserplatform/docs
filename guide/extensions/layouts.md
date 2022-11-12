@@ -25,7 +25,7 @@ Layout templates are used to render the configured child elements, the child ele
 
 The layout template is based on Razor template which contains the property accessors and HTML element that wraps the child. For example, column layout is shown below
 
-[!code[Main](../../src/Sites/Default/Themes/Skyline/LayoutTypes/Column.cshtml?range=1-)]
+<!-- [!code[Main](../../src/Sites/Default/Themes/Skyline/LayoutTypes/Column.cshtml?range=1-)] -->
 
 ## Layout Designer
 Layout designer is used to create, edit, delete and assign a layout to a page. As explained in section [page](../pages/index.md), every page has three modes view, edit and layout. To view layout of a page, login as administrator and click layout button in top right corner. This opens layout designer as shown below.

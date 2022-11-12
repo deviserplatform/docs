@@ -1,5 +1,5 @@
 # Deviser Admin
-Deviser Admin is a core feature of Deviser Platform to build admin user interfaces with just few lines of code. Admin UIs are generated based on an UI model that can be built using fluent API. In addition to the Admin UI, web service (web APIs) are also generated for the UI. An UI model can be created either directly from an Entity Framework (EF) Core data context or from an implementation of admin service. EF Core Data context method is a basic approach where CRUD operations for an Admin UI can be built. On other hand, customized UI model can be built using an admin service. These two approaches are explained in the following sections.
+Deviser Admin is a core feature of Deviser Platform to build admin user interfaces with just few lines of code. Admin UIs are generated based on an UI model that can be built using fluent API. In addition to the Admin UI, web service (Web APIs) are also generated for the UI. An UI model can be created either directly from an Entity Framework (EF) Core data context or from an implementation of admin service. EF Core Data context method is a basic approach where CRUD operations for an Admin UI can be built. On other hand, customized UI model can be built using an admin service. These two approaches are explained in the following sections.
 
 ## Database Context
 In this approach, Deviser Admin uses an EF Core dabase context to build Admin UIs. The below diagram illustrates the datbase context approach.
@@ -190,6 +190,26 @@ public class AdminController : AdminController<AdminConfigurator>
 }
 ```
 
+### Create a Page
+Once the `IAdminConfigurator` has been implemetned, each UI model should be hosted on a page. To create a page type **Admin**, navigate to `Admin (click the Deviser logo on top left corner) -> Page Management`. 
+
+[Page Management image goes here....]
+
+1. Click **Add** button to create a page.
+2. Select Page Type as **Admin**.
+3. Enter **Name** and **Title** for the the Page.
+4. Select the **Module Name**. It should match the module name configured in the **Module Managment** and in the `AdminController`. In this example, select **DemoAdminBlog**.
+5. Enter the **Model Name** of UI. It should match the configured UI Model. For example, DTO.**Post** to display **Post** UI model in this page.
+6. Save the page
+
+Page configuration to display **Post** UI model would look like this
+
+[Page Management to display **Post** UI model image goes here....]
+
+The generated UI would look like this
+
+<iframe title="Deviser Admin - Post" src="http://demo.deviser.io/AdminDemo/Context-Post#/list" width="100%" height="920px"></iframe>
+
 ## Admin Services
 This approach allows to build more customized admin UI from an existing .NET API. Following illustration shows the admin service.
 
@@ -244,7 +264,6 @@ This approach allows to build more customized admin UI from an existing .NET API
   </g>
  </g>
 </svg>
-
 
 ### Create Deviser Module
 Create a deviser module project as explained in the module section.

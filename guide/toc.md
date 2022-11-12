@@ -1,6 +1,5 @@
 # [Introduction](intro.md)
-# [Concepts](concepts.md)
-# [Get Started](get-started.md)
+# [Get Started](get-started.md) 
 # [Page](pages/index.md)
 # [Deviser Admin](deviser-admin/index.md)
 
